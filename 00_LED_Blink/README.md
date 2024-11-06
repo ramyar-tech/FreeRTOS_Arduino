@@ -42,7 +42,7 @@ This program demonstrates the use of FreeRTOS on an Arduino board to control an 
 ## Troubleshooting
 - **LED not blinking**: Verify the LED is connected correctly. Check the pin number in the code.
 - **No serial output**: Ensure the **Serial Monitor** is set to the correct baud rate (`9600`), and the correct COM port is selected in the **Tools** menu.
-  
+   
 ## License
 This project is open-source and available under the MIT License.
 
