@@ -42,18 +42,21 @@ This project demonstrates multitasking on an Arduino using FreeRTOS. It manages 
 4. Upload the code to your Arduino board.
 5. Open the Serial Monitor and set the baud rate to `9600`.
 
-## Expected Output
+## Code Explanation
 
-- The Serial Monitor will display the current priorities of the tasks and their execution counts.
+- **Pin Setup**: The `setup()` function initializes each LED pin as an output.
+- **Task Creation**: Three FreeRTOS tasks are created, each responsible for one LED (Red, Yellow, or Blue).
+  - Each task is created with a pointer to the LED pin number, which is used to toggle the respective LED.
+  - The tasks toggle the LED state every 300ms using `vTaskDelay(300 / portTICK_PERIOD_MS)`.
+- **Task Logic**: 
+  - **Red LED**: Toggles the Red LED and tracks the task execution count.
+  - **Yellow LED**: Toggles the Yellow LED, tracks execution, and adjusts task priority.
+  - **Blue LED**: Toggles the Blue LED and tracks the task execution count.
 
-### Example Output:
-```
-RED Task Run Time: 5
-YELLOW Task Run Time: 5
-BLUE Task Priority: 2
-RED Task Priority: 1
-YELLOW Task Priority: 1
-```
+## Usage
+
+1. Connect your Arduino to your computer and open the **Serial Monitor** (optional, mainly for debug).
+2. Upload the code and observe the LEDs: each LED should toggle independently every 300 milliseconds.
 
 ## Troubleshooting
 
@@ -64,11 +67,5 @@ YELLOW Task Priority: 1
 - **LEDs Not Blinking**:
   - Check wiring and resistor connections.
   - Verify the LEDs are connected to the correct pins.
-
-## Future Enhancements
-
-- Add dynamic task priority adjustment.
-- Integrate additional sensors or peripherals.
-- Implement power-saving features for idle tasks.
 
 
