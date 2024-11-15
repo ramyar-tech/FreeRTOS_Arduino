@@ -50,6 +50,3 @@ This Arduino program demonstrates how to control three LEDs (Red, Yellow, Blue) 
 - **Check Library Installation**: If FreeRTOS-related errors appear, ensure the FreeRTOS library is properly installed.
 - **Serial Monitor Issues**: For Serial Monitor debugging, ensure it’s set to the correct baud rate (9600) and that the correct COM port is selected.
 
-## License
-This project is open-source and available under the MIT License.
-
