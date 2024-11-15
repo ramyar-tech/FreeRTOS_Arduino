@@ -56,5 +56,3 @@ This Arduino project demonstrates multitasking and task priority management usin
 - **Library Issues**: Ensure the FreeRTOS library is installed if compilation errors occur.
 - **Serial Output Issues**: Check that the correct COM port is selected, and the Serial Monitor baud rate is set to 9600.
 
-## License
-This project is open-source and available under the MIT License.
