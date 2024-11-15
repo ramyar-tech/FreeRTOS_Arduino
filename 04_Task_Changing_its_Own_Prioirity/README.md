@@ -1,48 +1,53 @@
-# FreeRTOS LED Control with Task Profiling and Priority Management
+# LED Controller with FreeRTOS
 
-This Arduino project uses FreeRTOS to manage three separate tasks, each controlling an LED (Red, Yellow, and Blue). The program demonstrates basic task scheduling, LED toggling, and dynamic task priority management. Each task runs independently and logs its execution count to the Serial Monitor for profiling purposes.
+This Arduino program demonstrates multitasking using FreeRTOS to manage three independent tasks. Each task controls an LED (Red, Yellow, Blue), toggling its state periodically while profiling the task's runtime.
 
 ## Features
-- **Multitasking with FreeRTOS**: Each LED is controlled by an independent FreeRTOS task.
-- **LED Toggle Control**: The Red, Yellow, and Blue LEDs toggle their state at regular intervals (300ms).
-- **Task Profiling**: Each task tracks the number of times it has run, outputting this information to the Serial Monitor.
-- **Dynamic Priority Change**: The Yellow LED task changes its own priority during execution to demonstrate task management in FreeRTOS.
+- **FreeRTOS Multitasking**: Each LED is controlled by a separate FreeRTOS task.
+- **Task Profiling**: Tracks the runtime of each task and displays it on the Serial Monitor.
+- **Adjustable Delay**: Tasks pause for a user-defined delay (currently 300 milliseconds) between toggles.
+- **Dynamic Task Management**: Includes examples of changing task priorities during execution.
 
 ## Hardware Requirements
-- **Arduino Board**: Compatible with Arduino Uno, Nano, or other AVR-based boards.
-- **3 LEDs**: Red, Yellow, and Blue.
-- **3 Resistors**: 220-ohm resistors for current limiting.
-- **Breadboard and Jumper Wires**: For connecting LEDs to the Arduino.
+- Arduino board (e.g., Arduino Uno, Nano, or compatible)
+- 3 LEDs (Red, Yellow, and Blue)
+- 3 resistors (220 ohms) for current limiting
+- Breadboard and jumper wires for wiring the LEDs to the Arduino
 
 ## Software Requirements
-- **Arduino IDE**: Version 1.8.x or higher.
-- **FreeRTOS Library for Arduino**: Install via the Arduino Library Manager.
+- **Arduino IDE**: Version 1.8.x or higher
+- **FreeRTOS Library for Arduino**: Install through the Arduino Library Manager
 
-## Circuit Setup
-1. **Connect LEDs** to the specified digital pins:
-   - **Red LED**: Pin 6
-   - **Yellow LED**: Pin 7
-   - **Blue LED**: Pin 8
-2. Each LED should be connected to a 220-ohm resistor in series, with the resistor connected to ground.
+## Setup Instructions
+1. **Install the FreeRTOS Library**:
+   - Open the Arduino IDE.
+   - Go to **Sketch** -> **Include Library** -> **Manage Libraries**.
+   - Search for **FreeRTOS** and install it.
+
+2. **Connect the LEDs**:
+   - **Red LED**: Connect to pin 6 with a 220-ohm resistor.
+   - **Yellow LED**: Connect to pin 7 with a 220-ohm resistor.
+   - **Blue LED**: Connect to pin 8 with a 220-ohm resistor.
+   - Connect each LED’s ground to the Arduino GND.
+
+3. **Upload the Code**:
+   - Open this code in the Arduino IDE.
+   - Select your Arduino board and the correct COM port under **Tools**.
+   - Click **Upload** to load the program onto the Arduino.
 
 ## Code Explanation
-- **Task Creation**: 
-  - Three tasks are created in `setup()` for controlling each LED, using `xTaskCreate()` for task setup.
-- **Task Profiling**:
-  - Each task maintains a counter (`Profiler`) that increments with every task cycle. This count is printed to the Serial Monitor for tracking.
-- **LED Toggling**:
-  - Each task toggles its LED on and off every 300ms.
-- **Dynamic Priority Change**:
-  - The Yellow LED task modifies its own priority dynamically to demonstrate task priority adjustments within FreeRTOS.
+- **Pin Setup**: The `setup()` function initializes each LED pin as an output.
+- **Task Creation**: Three FreeRTOS tasks are created, each responsible for one LED (Red, Yellow, or Blue).
+  - Each task tracks its execution runtime using a profiling variable.
+  - The tasks toggle the LED state every 300ms using `vTaskDelay(300 / portTICK_PERIOD_MS)`.
+- **Task Logic**: The tasks use FreeRTOS functions like `uxTaskPriorityGet` and `vTaskPrioritySet` for runtime task management.
 
 ## Usage
-1. **Upload the Code**:
-   - Load this code into the Arduino IDE, select the appropriate board and COM port, and upload it.
-   
-2. **Open the Serial Monitor**:
-   - Set the baud rate to 9600. The Serial Monitor will show the task profiling data (i.e., the number of times each task has executed).
+1. Connect your Arduino to your computer and open the **Serial Monitor** (optional, mainly for debugging).
+2. Upload the code and observe the LEDs: each LED should toggle independently every 300 milliseconds.
+3. The Serial Monitor displays the runtime of each task and any changes in task priority.
 
-3. **Observe the LEDs**:
-   - Each LED (Red, Yellow, Blue) should blink on and off every 300 milliseconds, indicating that each task is being scheduled by FreeRTOS independently.
-
-## Example Serial Output
+## Troubleshooting
+- **No LED Blinking**: Ensure each LED is correctly connected to the designated pin (6, 7, or 8) and grounded.
+- **Check Library Installation**: If FreeRTOS-related errors appear, ensure the FreeRTOS library is properly installed.
+- **Serial Monitor Issues**: For Serial Monitor debugging, ensure it’s set to the correct baud rate (9600) and that the correct COM port is selected.
