@@ -45,6 +45,5 @@ This program demonstrates how to control three LEDs (Red, Yellow, Blue) using Fr
 - **LEDs not connected correctly**: Double-check your wiring, ensuring that each LED is connected to the correct pin (6, 7, 8).
 - **No output in Serial Monitor**: Make sure that the **Serial Monitor** is set to the correct baud rate (9600) and the correct COM port is selected under **Tools**.
   
-## License
-This project is open-source and available under the MIT License.
+
 
