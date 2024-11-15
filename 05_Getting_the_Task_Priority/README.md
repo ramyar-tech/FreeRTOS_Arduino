@@ -68,4 +68,3 @@ This project demonstrates multitasking on an Arduino using FreeRTOS. It manages 
   - Check wiring and resistor connections.
   - Verify the LEDs are connected to the correct pins.
 
-
